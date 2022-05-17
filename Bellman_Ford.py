@@ -1,3 +1,5 @@
+import time
+
 class Graph:
 	def __init__(self, vertices):
 		self.V = vertices 
@@ -53,6 +55,7 @@ g.addEdge(0, 1, 100, float("Inf"), float("Inf"))
 g.addEdge(0, 2, float("Inf"), 180, 10)
 g.addEdge(1, 2, 120, float("Inf"), 10)
 
+start=time.time()
 g.BellmanFord(0,0,30) 
 """
 
@@ -61,7 +64,9 @@ g=Graph(2)
 g.addEdge(0, 1, 4, 2, 2)
 g.addEdge(1, 0, 4, 2, 1)
 
+start=time.time()
 g.BellmanFord(0,0,1)
+end=time.time()
 """
 
 """
@@ -75,7 +80,9 @@ g.addEdge(1, 0, 7, 8, 2)
 g.addEdge(2, 0, float("Inf"), 2, 2)
 g.addEdge(2, 1, 3, 2, 1)
 
+start=time.time()
 g.BellmanFord(0,0,2) 
+end=time.time()
 """
 
 """
@@ -94,10 +101,12 @@ g.addEdge(2, 1, 4, 1, 0.16)
 g.addEdge(3, 1, float("Inf"), 5, 0.16)
 g.addEdge(3, 2, float("Inf"), 3, 0.24)
 
+start=time.time()
 g.BellmanFord(0, 0, 0.5) 
+end=time.time()
 """
 
-
+"""
 g= Graph(5)
 g.addEdge(0, 1, 4, 3, 1.05)
 g.addEdge(1, 2, 2, 3, 5)
@@ -123,9 +132,11 @@ g.addEdge(3, 1, 13, 7, 1.05)
 g.addEdge(4, 1, 1, 1.5, 1.05)
 g.addEdge(4, 2, 4, 8, 5)
 
+start=time.time()
 g.BellmanFord(0,0,2.06) 
+end=time.time()
 
-
+"""
 """
 g= Graph(6)
 
@@ -152,9 +163,44 @@ g.addEdge(4, 3, 2, float("Inf"), float("Inf"))
 g.addEdge(5, 3, 4, float("Inf"), float("Inf"))
 g.addEdge(5, 4, 3, 3, 1.06)
 
+start=time.time()
 g.BellmanFord(0,0.1,0) 
 """
 
+g=Graph(7)
+
+g.addEdge(0, 1, 3, 2, 0.25)
+g.addEdge(1, 2, 4, 6, 2)
+g.addEdge(2, 3, 8, 3, 1)
+g.addEdge(3, 4, float("Inf"), 5, 0.5)
+g.addEdge(4, 5, float("Inf"), 1, 0.06)
+g.addEdge(5, 6, 6, float("Inf"), float("Inf"))
+g.addEdge(0, 3, float("Inf"), 20, 1)
+g.addEdge(1, 6, 4, float("Inf"), float("Inf"))
+g.addEdge(1, 5, float("Inf"), 8, 0.06)
+g.addEdge(2, 4, 4, 3, 0.5)
+g.addEdge(2, 5, 6, 2, 0.06)
+g.addEdge(3, 6, 15, float("Inf"), float("Inf"))
+g.addEdge(0, 5, 9, float("Inf"), 0.06)
 
 
+g.addEdge(1, 0, 3, 2, 0.3)
+g.addEdge(2, 1, 4, 6, 0.25)
+g.addEdge(3, 2, 8, 3, 2)
+g.addEdge(4, 3, float("Inf"), 5, 1)
+g.addEdge(5, 4, float("Inf"), 1, 0.5)
+g.addEdge(6, 5, 6, float("Inf"), 0.06)
 
+g.addEdge(3, 0, float("Inf"), 20, 0.3)
+g.addEdge(6, 1, 4, float("Inf"), 0.25)
+g.addEdge(5, 1, float("Inf"), 8, 0.25)
+g.addEdge(4, 2, 4, 3, 2)
+g.addEdge(5, 2, 6, 2, 2)
+g.addEdge(6, 3, 15, float("Inf"), 1)
+g.addEdge(5, 0, 9, float("Inf"), 0.3)
+
+start=time.time()
+g.BellmanFord(2,0,2)
+end=time.time()
+
+print(end-start)
