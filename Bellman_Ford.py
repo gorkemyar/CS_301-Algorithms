@@ -12,7 +12,7 @@ class Graph:
 	def printArr(self, dist):
 		print("Vertex Distance from Source")
 		for i in range(self.V):
-			print(i, "{:.2f}".format((dist[i])))
+			print(chr(i+ord("A")), "{:.2f}".format((dist[i])))
 	
 
 	def BellmanFord(self, src, initialB, initialT):
@@ -166,7 +166,7 @@ g.addEdge(5, 4, 3, 3, 1.06)
 start=time.time()
 g.BellmanFord(0,0.1,0) 
 """
-
+"""
 g=Graph(7)
 
 g.addEdge(0, 1, 3, 2, 0.25)
@@ -200,7 +200,186 @@ g.addEdge(6, 3, 15, float("Inf"), 1)
 g.addEdge(5, 0, 9, float("Inf"), 0.3)
 
 start=time.time()
-g.BellmanFord(2,0,2)
+g.BellmanFord(0,0,2)
 end=time.time()
 
-print(end-start)
+#print(end-start)
+"""
+
+
+
+#INSTANCE 1
+
+"""
+all_cities = ['A','B','C','D','E','F','G']
+
+cities_with_bus = ['A','B','C','D','F','G']
+
+cities_with_train = ['A','B','E','F','G']
+
+Time_btw_train_bus = [('A',5),('B',10),('F',10),('G',5)]
+
+Time_btw_cities_by_bus = [('A','B',20),('B','C',20),('B','F',40),('C','D',15),('D','G',10),('F','G',10)]
+
+Time_btw_cities_by_train = [('A','B',10),('A','E',20),('B','E',5),('E','F',10),('F','G',30)]
+
+"""
+"""
+g=Graph(7)
+g.addEdge(0, 1, 20, 10, 10)
+g.addEdge(1, 2, 20, float("Inf"), float("Inf"))
+g.addEdge(1, 5, 40, float("Inf"), 10)
+g.addEdge(2, 3, 15, float("Inf"), float("Inf"))
+g.addEdge(3, 6, 10, float("Inf"), 5)
+g.addEdge(5, 6, 10, 30, 5)
+
+g.addEdge(0, 4, float("Inf"), 20, float("Inf"))
+g.addEdge(1, 4, float("Inf"), 5, float("Inf"))
+g.addEdge(4, 5, float("Inf"), 10, 10)
+
+
+g.addEdge(1, 0, 20, 10, 5)
+g.addEdge(2, 1, 20, float("Inf"), 10)
+g.addEdge(5, 1, 40, float("Inf"), 10)
+g.addEdge(3, 2, 15, float("Inf"), float("Inf"))
+g.addEdge(6, 3, 10, float("Inf"), float("Inf"))
+g.addEdge(6, 5, 10, 30, 10)
+
+g.addEdge(4, 0, float("Inf"), 20, 5)
+g.addEdge(4, 1, float("Inf"), 5, 10)
+g.addEdge(5, 4, float("Inf"), 10, float("Inf"))
+
+g.BellmanFord(2, 0, float("Inf"))
+
+"""
+
+#INSTANCE 2
+
+"""
+all_cities = ['A','B','C','D','E','F']
+
+cities_with_bus = ['A','B','C','E','F']
+
+cities_with_train = ['A','B','C','D','F']
+
+Time_btw_train_bus = [('A',5),('B',5),('C',25),('F',10)]
+
+Time_btw_cities_by_bus = [('A','B',40),('B','C',5),('C','E',5),('E','F',5)]
+
+Time_btw_cities_by_train = [('A','C',10),('C','D',5),('B','D',5),('D','F',40)]
+
+"""
+"""
+g=Graph(6)
+g.addEdge(0, 1, 40, float("Inf"), 5)
+g.addEdge(1, 2, 5, float('Inf'), 25)
+g.addEdge(2, 4, 5, float("Inf"), float("Inf"))
+g.addEdge(4, 5, 5, float("Inf"), 10)
+
+g.addEdge(0, 2, float("Inf"), 10, 25)
+g.addEdge(2, 3, float("Inf"), 5, float("Inf"))
+g.addEdge(1, 3, float("Inf"), 5, float("Inf"))
+g.addEdge(3, 5, float("Inf"), 40, 10)
+
+g.addEdge(1, 0, 40, float("Inf"), 5)
+g.addEdge(2, 1, 5, float('Inf'), 5)
+g.addEdge(4, 2, 5, float("Inf"), 25)
+g.addEdge(5, 4, 5, float("Inf"), float("Inf"))
+
+g.addEdge(2, 0, float("Inf"), 10, 5)
+g.addEdge(3, 2, float("Inf"), 5, 25)
+g.addEdge(3, 1, float("Inf"), 5, 5)
+g.addEdge(5, 3, float("Inf"), 40, float("Inf"))
+
+g.BellmanFord(2,0,25)
+
+"""
+
+
+#INSTANCE 3
+
+"""
+all_cities = ['A', 'B', 'C', 'D', 'E']
+
+cities_with_bus = ['A', 'B', 'C', 'D']
+
+cities_with_train = ['A', 'C', 'E']
+
+Time_btw_train_bus = [('A',5), ('C',10)]
+
+Time_btw_cities_by_bus = [('A','B',30), ('A','C',30), ('B','C',20), ('B','D',22), ('C','D',20)]
+
+Time_btw_cities_by_train = [('A','C',20), ('A','E',75), ('C','E',40)]
+
+"""
+"""
+g = Graph(5)
+
+g.addEdge(0, 1, 30, float("Inf"), float("Inf"))
+g.addEdge(0, 2, 30, 20, 10)
+g.addEdge(1, 2, 20, float("Inf"), 10)
+g.addEdge(1, 3, 22, float("Inf"), float("Inf"))
+g.addEdge(2, 3, 20, float("Inf"), float("Inf"))
+
+g.addEdge(0, 4, float("Inf"), 75, float("Inf"))
+g.addEdge(2, 4, float("Inf"), 40, float("Inf"))
+
+
+g.addEdge(1, 0, 30, float("Inf"), 5)
+g.addEdge(2, 0, 30, 20, 5)
+g.addEdge(2, 1, 20, float("Inf"), float("Inf"))
+g.addEdge(3, 1, 22, float("Inf"), float("Inf"))
+g.addEdge(3, 2, 20, float("Inf"), 10)
+
+g.addEdge(4, 0, float("Inf"), 75, 5)
+g.addEdge(4, 2, float("Inf"), 40, 10)
+
+g.BellmanFord(0, 0, 5)
+
+"""
+
+#INSTANCE 4
+
+"""
+all_cities = ['A', 'B', 'C', 'D', 'E', 'F']
+
+cities_with_bus = ['A', 'B', 'C', 'D', 'E']
+
+cities_with_train = ['B', 'D', 'E', 'F']
+
+Time_btw_train_bus = [('B',4), ('D',7), ('E',8)]
+
+Time_btw_cities_by_bus = [('A','D',27), ('A','C',23), ('C','E',17), ('B','D',13), ('B','C',18), ('D','E',20)]
+
+Time_btw_cities_by_train = [('D','E',12), ('D','F',22), ('E','F',17), ('B','F',11)]
+"""
+"""
+
+g= Graph(6)
+
+g.addEdge(0, 3, 27, float("Inf"), 7)
+g.addEdge(0, 2, 23, float("Inf"), float("Inf"))
+g.addEdge(2, 4, 17, float("Inf"), 8)
+g.addEdge(1, 3, 13, float("Inf"), 7)
+g.addEdge(1, 2, 18, float("Inf"), float("Inf"))
+g.addEdge(3, 4, 20, 12, 8)
+
+g.addEdge(3, 5, float("Inf"), 22, float("Inf"))
+g.addEdge(4, 5, float("Inf"), 17, float("Inf"))
+g.addEdge(1, 5, float("Inf"), 11, float("Inf"))
+
+
+g.addEdge(3, 0, 27, float("Inf"), float("Inf"))
+g.addEdge(2, 0, 23, float("Inf"), float("Inf"))
+g.addEdge(4, 2, 17, float("Inf"), float("Inf"))
+g.addEdge(3, 1, 13, float("Inf"), 4)
+g.addEdge(2, 1, 18, float("Inf"), 4)
+g.addEdge(4, 3, 20, 12, 7)
+
+g.addEdge(5, 3, float("Inf"), 22, 7)
+g.addEdge(5, 4, float("Inf"), 17, 8)
+g.addEdge(5, 1, float("Inf"), 11, 4)
+
+g.BellmanFord(1, 0, 4)
+
+"""
